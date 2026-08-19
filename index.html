@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>أبو ميكو 𒉭</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;font-family:Arial,Tahoma,sans-serif;color:#fff;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 50% 0%,#39e8ff55,transparent 30%),
+    radial-gradient(circle at 0% 80%,#00bcd433,transparent 30%),
+    radial-gradient(circle at 100% 60%,#ff4fb333,transparent 25%),
+    linear-gradient(135deg,#020a12,#062c40,#03131f);
+  background-size:160% 160%;animation:bgMove 16s ease-in-out infinite alternate;
+}
+body.shake{animation:screenShake .28s ease}
+@keyframes bgMove{from{background-position:0 0}to{background-position:100% 100%}}
+@keyframes screenShake{
+  0%,100%{transform:translate(0)}
+  20%{transform:translate(-4px,2px)}40%{transform:translate(4px,-2px)}
+  60%{transform:translate(-3px,-1px)}80%{transform:translate(3px,1px)}
+}
+.bg-symbol{
+  position:fixed;pointer-events:none;user-select:none;z-index:0;opacity:.28;
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp{from{transform:translateY(110vh) rotate(0)}to{transform:translateY(-15vh) rotate(360deg)}}
+.glow{
+  position:fixed;width:320px;height:320px;border-radius:50%;pointer-events:none;
+  filter:blur(90px);z-index:0;animation:glowMove 9s ease-in-out infinite alternate;
+}
+.glow.one{top:5%;left:-130px;background:#00eaff22}
+.glow.two{right:-130px;bottom:5%;background:#ff4fd522}
+@keyframes glowMove{from{transform:translate(0)}to{transform:translate(90px,-50px)}}
+
+.container{position:relative;z-index:2;width:92%;max-width:600px;margin:auto;padding:50px 15px 45px}
+.card{
+  padding:30px 20px 35px;border-radius:32px;
+  background:linear-gradient(145deg,#ffffff12,#ffffff05);
+  border:1px solid #ffffff25;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:0 20px 70px #00000055,inset 0 1px #ffffff20;
+}
+.profile-wrapper{position:relative;display:inline-block;margin-bottom:8px}
+.profile-wrapper::before{
+  content:"🎀";position:absolute;top:-12px;right:-18px;font-size:32px;z-index:5;
+  filter:drop-shadow(0 0 8px #00eaff);animation:ribbonFloat 2s ease-in-out infinite alternate;
+}
+.profile-wrapper::after{
+  content:"";position:absolute;inset:-15px;border-radius:50%;
+  border:1px solid #7cefff55;box-shadow:0 0 35px #00eaff22;
+  animation:ringPulse 3s ease-in-out infinite;pointer-events:none;
+}
+@keyframes ribbonFloat{from{transform:rotate(-8deg)}to{transform:rotate(8deg) translateY(-5px)}}
+@keyframes ringPulse{0%,100%{transform:scale(.96);opacity:.3}50%{transform:scale(1.08);opacity:.8}}
+.profile{
+  width:155px;height:155px;object-fit:cover;border-radius:50%;border:4px solid white;
+  box-shadow:0 0 20px #b9f7ff,0 0 50px #00d9ff88,0 0 90px #00d9ff33;
+  animation:profileFloat 4s ease-in-out infinite,profileGlow 2.5s ease-in-out infinite alternate;
+}
+@keyframes profileFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes profileGlow{from{box-shadow:0 0 15px #b9f7ff,0 0 40px #00d9ff66}to{box-shadow:0 0 25px white,0 0 70px #00eaffaa}}
+h1{margin:18px 0 5px;font-size:clamp(30px,8vw,40px);text-shadow:0 0 10px #8eefff,0 0 30px #00cfff,0 0 60px #00cfff55}
+.subtitle{font-size:13px;letter-spacing:2px;color:#9defff;opacity:.8;margin-bottom:12px}
+.bio{line-height:1.8;font-size:16px;color:#ffffffdd;margin-bottom:25px}
+.miku-tag{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 16px;margin-bottom:25px;border-radius:50px;
+  background:#00d9ff12;border:1px solid #00eaff55;box-shadow:0 0 20px #00d9ff22;font-size:14px
+}
+.miku-dot{width:9px;height:9px;border-radius:50%;background:#48eaff;box-shadow:0 0 12px #00eaff;animation:dotPulse 1.5s infinite}
+@keyframes dotPulse{50%{transform:scale(1.5);opacity:.5}}
+.links{display:flex;flex-direction:column;gap:14px}
+.link{
+  position:relative;display:flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:15px;
+  border-radius:19px;color:white;text-decoration:none;font-size:17px;
+  background:linear-gradient(100deg,#ffffff0c,#ffffff18,#ffffff0c);
+  border:1px solid #ffffff25;backdrop-filter:blur(12px);overflow:hidden;transition:.3s;
+}
+.link::before{
+  content:"";position:absolute;width:55px;height:55px;border-radius:50%;
+  background:#7cefff22;filter:blur(15px);right:10%;opacity:.5;transition:.4s
+}
+.link::after{
+  content:"";position:absolute;top:-60%;left:-30%;width:35%;height:220%;
+  background:#ffffff15;transform:rotate(20deg);transition:.5s
+}
+.link:hover{transform:translateY(-4px) scale(1.015);border-color:#8eefff99;box-shadow:0 10px 35px #00d9ff33}
+.link:hover::after{left:110%}
+.link:hover::before{transform:scale(2);opacity:.8}
+.link:active{transform:scale(.97)}
+.decor-title{margin-top:35px;margin-bottom:12px;font-size:14px;opacity:.65}
+.decorations{position:relative;height:190px;margin-top:10px}
+.decor{
+  position:absolute;width:82px;height:82px;object-fit:cover;border-radius:20px;border:2px solid #ffffff88;
+  box-shadow:0 0 20px #00d9ff44;transition:.4s;animation:decorFloat 4s ease-in-out infinite alternate;
+}
+.decor::after{content:"";position:absolute}
+.decor:hover{transform:scale(1.25) rotate(0)!important;z-index:10;box-shadow:0 0 35px #00eaff99}
+.decor1{left:4%;top:15px;transform:rotate(-13deg)}
+.decor2{right:4%;top:5px;transform:rotate(13deg)}
+.decor3{left:23%;bottom:0;transform:rotate(8deg)}
+.decor4{right:23%;bottom:8px;transform:rotate(-8deg)}
+@keyframes decorFloat{from{margin-top:0}to{margin-top:-10px}}
+
+.snake-section{
+  margin-top:35px;padding:15px;border-radius:27px;background:linear-gradient(145deg,#020c14ee,#041b27dd);
+  border:1px solid #7cefff30;box-shadow:0 20px 60px #00000066,inset 0 1px #ffffff15;
+}
+.snake-heading{font-size:23px;font-weight:bold;color:#9defff;text-shadow:0 0 15px #00eaff66;margin-bottom:4px}
+.snake-subheading{font-size:12px;opacity:.45;margin-bottom:15px}
+.leader-card{
+  position:relative;display:flex;align-items:center;gap:10px;margin-bottom:12px;padding:9px 12px;border-radius:15px;
+  background:linear-gradient(90deg,#ffd76b12,#ffffff06);border:1px solid #ffd76b25;overflow:hidden
+}
+.leader-card::before{
+  content:"";position:absolute;width:100px;height:100px;border-radius:50%;background:#ffd76b18;filter:blur(25px);
+  left:-30px;top:-30px;animation:softOrb 4s ease-in-out infinite alternate
+}
+@keyframes softOrb{to{transform:translate(170px,20px)}}
+.leader-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid #ffd76b;box-shadow:0 0 14px #ffd76b55}
+.leader-info{text-align:right;flex:1;position:relative;z-index:1}
+.leader-title{font-size:10px;color:#ffd76b;opacity:.8}
+.leader-name{font-size:14px;font-weight:bold}
+.leader-score{font-size:12px;color:#9defff}
+.snake-stats{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;margin-bottom:10px;border-radius:14px;background:#ffffff08;border:1px solid #ffffff10;font-size:13px}
+.score-value{color:#7cefff;font-weight:bold}.best-value{color:#ffd76b;font-weight:bold}
+.snake-canvas-wrap{
+  position:relative;width:100%;aspect-ratio:1/1;border-radius:21px;overflow:hidden;border:1px solid #7cefff35;
+  box-shadow:0 0 40px #00eaff20
+}
+#snakeCanvas{display:block;width:100%;height:100%;background:#020c13;touch-action:none}
+.game-top-buttons{display:flex;gap:8px;margin-top:10px}.game-top-buttons button{flex:1}
+.snake-overlay{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;
+  background:linear-gradient(135deg,#02080de8,#041c28e8);backdrop-filter:blur(5px);z-index:20;transition:.25s
+}
+.snake-overlay.hidden{opacity:0;pointer-events:none}
+.overlay-title{font-size:31px;font-weight:bold;color:#9defff;text-shadow:0 0 20px #00eaff}
+.overlay-text{font-size:13px;opacity:.55;margin:8px 0 15px}
+.game-button{
+  border:1px solid #7cefff35;color:white;background:#ffffff09;padding:11px 17px;border-radius:14px;
+  font-size:14px;cursor:pointer;transition:.2s;touch-action:manipulation
+}
+.game-button:hover{transform:translateY(-2px);border-color:#7cefff88;background:#00eaff12}
+.game-button:active{transform:scale(.94)}
+.game-button.primary{background:linear-gradient(135deg,#00bcd433,#ff4fb322);border-color:#7cefff66}
+.name-overlay{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:linear-gradient(135deg,#02080df5,#041c28f5);backdrop-filter:blur(8px);z-index:30;transition:.25s
+}
+.name-overlay.hidden{opacity:0;pointer-events:none}
+.name-box{
+  width:100%;max-width:320px;padding:22px;border-radius:22px;text-align:center;background:#ffffff09;
+  border:1px solid #7cefff35;box-shadow:0 15px 50px #00000066,0 0 30px #00eaff15
+}
+.name-title{font-size:24px;font-weight:bold;color:#9defff;text-shadow:0 0 15px #00eaff}
+.name-text{margin:8px 0 15px;font-size:12px;opacity:.6}
+#playerNameInput{
+  width:100%;padding:13px;border-radius:13px;border:1px solid #7cefff35;outline:none;
+  background:#020c14;color:white;text-align:center;font-size:15px;margin-bottom:10px
+}
+#playerNameInput:focus{border-color:#7cefff;box-shadow:0 0 20px #00eaff22}
+.skin-panel{display:none;margin-top:13px;padding-top:14px;border-top:1px solid #ffffff12}
+.skin-panel.show{display:block;animation:panelIn .25s ease}
+@keyframes panelIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+.skin-title{font-size:14px;opacity:.7;margin-bottom:11px}
+.skin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.skin{
+  position:relative;min-height:105px;padding:7px;border-radius:15px;border:1px solid #ffffff15;background:#ffffff06;
+  cursor:pointer;transition:.2s;overflow:hidden;touch-action:manipulation
+}
+.skin::after{
+  content:"";position:absolute;width:45px;height:45px;border-radius:50%;background:#7cefff16;filter:blur(15px);
+  right:-10px;bottom:-10px;transition:.3s
+}
+.skin:hover{transform:translateY(-3px)}.skin:hover::after{transform:scale(2)}
+.skin:active{transform:scale(.95)}.skin.selected{border-color:#7cefff;box-shadow:0 0 20px #00eaff33}
+.skin.disabled{opacity:.35;pointer-events:none}
+.skin img{display:block;width:70px;height:70px;margin:auto;object-fit:contain;filter:drop-shadow(0 0 8px #00eaff44)}
+.skin-name{font-size:11px;margin-top:4px;opacity:.9}
+.legendary{border-color:#ffd76b55}.legendary.selected{border-color:#ffd76b;box-shadow:0 0 25px #ffd76b44}
+.legendary::before{content:"LEGENDARY";position:absolute;top:4px;left:5px;font-size:7px;color:#ffd76b;z-index:2}
+.controls{width:200px;margin:15px auto 5px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;direction:ltr}
+.control{width:100%;height:48px;padding:0;border-radius:13px;border:1px solid #ffffff15;background:linear-gradient(145deg,#ffffff0a,#00eaff08);color:white;font-size:19px;cursor:pointer;user-select:none;touch-action:manipulation;transition:.12s}
+.control:active{transform:scale(.9);background:#00eaff25}
+.control.up{grid-column:2}.control.left{grid-column:1;grid-row:2}.control.down{grid-column:2;grid-row:2}.control.right{grid-column:3;grid-row:2}
+.game-message{min-height:20px;margin-top:8px;font-size:12px;color:#ffffff99}
+.microphone,.music-note{position:fixed;font-size:35px;filter:drop-shadow(0 0 12px #00eaff);z-index:5}
+.microphone{right:18px;bottom:22px;animation:micFloat 3s ease-in-out infinite}
+.music-note{left:18px;bottom:25px;color:#9defff;animation:noteFloat 2.5s ease-in-out infinite}
+@keyframes micFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-13px) rotate(5deg)}}
+@keyframes noteFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-15px) rotate(5deg)}}
+.footer{margin-top:30px;padding-top:18px;border-top:1px solid #ffffff12;opacity:.55;font-size:13px}
+
+@media(max-width:500px){
+  .container{padding-top:30px}.card{padding:25px 14px 30px}.profile{width:135px;height:135px}
+  .decor{width:70px;height:70px}.decorations{height:165px}.skin-grid{grid-template-columns:repeat(2,1fr)}
+  .snake-section{padding:11px}.controls{width:185px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div class="glow one"></div><div class="glow two"></div>
+
+<script>
+const symbols=["🩵","🎀","✨","⭐","♪","♫","♬"];
+for(let i=0;i<30;i++){
+  const e=document.createElement("div");e.className="bg-symbol";
+  e.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  e.style.left=Math.random()*100+"vw";e.style.fontSize=12+Math.random()*23+"px";
+  e.style.animationDuration=7+Math.random()*10+"s";e.style.animationDelay=Math.random()*8+"s";
+  document.body.appendChild(e);
+}
+</script>
+
+<div class="container"><div class="card">
+<div class="profile-wrapper">
+<img class="profile" src="https://cdn.phototourl.com/free/2026-08-18-21994212-0175-4fd8-9c33-89ac012b8cb3.png" alt="Miku">
+</div>
+
+<h1>أبو ميكو 𒉭</h1>
+<div class="subtitle">MIKU FAN • VOCALOID • 🎀</div>
+<div class="bio">🩵 العاشق الأول لميكو،<br>وغريب الأطوار الأول!! 🎀<br><br>إذا وصلت هنا...<br>فأنت دخلت عالم أبو ميكو.</div>
+<div class="miku-tag"><span class="miku-dot"></span><span>01 • MIKU</span><span>♪</span></div>
+
+<div class="links">
+<a class="link" href="https://www.tiktok.com/@ii._.iq" target="_blank" rel="noopener noreferrer">🎤 TikTok — الاحتياطي</a>
+<a class="link" href="https://www.tiktok.com/@ffreakk._" target="_blank" rel="noopener noreferrer">🎵 TikTok — الاحتياطي ٢</a>
+<a class="link" href="https://www.instagram.com/mikumyheart" target="_blank" rel="noopener noreferrer">📸 Instagram — mikumyheart</a>
+</div>
+
+<div class="decor-title">✦ بعض من عالم ميكو ✦</div>
+<div class="decorations">
+<img class="decor decor1" src="https://cdn.phototourl.com/free/2026-08-18-12f90a9e-cca1-4951-996b-5783fcc32dc7.jpg" alt="Miku">
+<img class="decor decor2" src="https://cdn.phototourl.com/free/2026-08-18-6cf830fd-6df8-490a-8322-d269fe703127.jpg" alt="Miku">
+<img class="decor decor3" src="https://cdn.phototourl.com/free/2026-08-18-a787fa0a-2bf4-4a7a-99d4-df6fec292a75.jpg" alt="Miku">
+<img class="decor decor4" src="https://cdn.phototourl.com/free/2026-08-18-dd319829-a7d7-49b5-b114-8d108392c091.jpg" alt="Miku">
+</div>
+
+<section class="snake-section" id="snakeSection">
+<div class="snake-heading">🐍 VOCALOID SNAKE</div>
+<div class="snake-subheading">✦ AboMiku Mini Arcade ✦</div>
+
+<div class="leader-card">
+<img class="leader-avatar" id="leaderAvatar" src="https://i.ibb.co/kspGzpN4/157-20260819225921.png" alt="leader">
+<div class="leader-info">
+<div class="leader-title">🏆 اعلى سكور</div>
+<div class="leader-name" id="leaderName">باقي ما لعبت</div>
+<div class="leader-score" id="leaderScore">SCORE: 0</div>
+</div>
+</div>
+
+<div class="snake-stats">
+<span>SCORE: <span class="score-value" id="score">0</span></span>
+<span>BEST: <span class="best-value" id="best">0</span></span>
+</div>
+
+<div class="snake-canvas-wrap">
+<canvas id="snakeCanvas" width="600" height="600"></canvas>
+
+<div class="snake-overlay" id="snakeOverlay">
+<div class="overlay-title" id="overlayTitle">VOCALOID SNAKE</div>
+<div class="overlay-text" id="overlayText">اكتب اسمك ثم ابدأ اللعبة 🎀</div>
+<button class="game-button primary" id="startGame">NEW GAME</button>
+</div>
+
+<div class="name-overlay hidden" id="nameOverlay">
+<div class="name-box">
+<div class="name-title">🎀 قبل اللعب</div>
+<div class="name-text">اكتب اسمك عشان ينحفظ أعلى سكور 🐍</div>
+<input id="playerNameInput" type="text" maxlength="24" placeholder="اكتب اسمك..." autocomplete="off">
+<button class="game-button primary" id="saveNameButton">✨ دخول اللعبة</button>
+</div>
+</div>
+</div>
+
+<div class="game-top-buttons">
+<button class="game-button primary" id="newGameButton">🎮 NEW GAME</button>
+<button class="game-button" id="skinsButton">🎀 SKINS</button>
+</div>
+
+<div class="skin-panel" id="skinPanel">
+<div class="skin-title">✦ اختر شخصيتك ✦</div>
+<div class="skin-grid">
+<div class="skin selected" data-skin="0"><img src="https://i.ibb.co/kspGzpN4/157-20260819225921.png" alt="Miku"><div class="skin-name">🩵 ميكو</div></div>
+<div class="skin" data-skin="1"><img src="https://i.ibb.co/fGv3t8Jp/161-20260819230140.png" alt="Teto"><div class="skin-name">❤️ تيتو</div></div>
+<div class="skin" data-skin="2"><img src="https://i.ibb.co/9HRb6hWs/158-20260819225946.png" alt="Neru"><div class="skin-name">💢 نيرو</div></div>
+<div class="skin" data-skin="3"><img src="https://i.ibb.co/qMXgPFVC/159-20260819230004.png" alt="Luka"><div class="skin-name">🌸 لوكا</div></div>
+<div class="skin" data-skin="4"><img src="https://i.ibb.co/1frTsNRd/160-20260819230022.png" alt="Rin"><div class="skin-name">💛 رين</div></div>
+<div class="skin legendary" data-skin="5"><img src="https://i.ibb.co/6RQ5v91w/157-20260819231454.png" alt="Abo Miku"><div class="skin-name">𒉭 أبو ميكو</div></div>
+</div></div>
+
+<div class="controls">
+<button class="control up" data-direction="up">▲</button>
+<button class="control left" data-direction="left">◀</button>
+<button class="control down" data-direction="down">▼</button>
+<button class="control right" data-direction="right">▶</button>
+</div>
+<div class="game-message" id="gameMessage">استخدم الأسهم أو اسحب بإصبعك 🐍</div>
+</section>
+
+<div class="footer">🇸🇦 أبو ميكو شبل الجنوب 🩵<br>𒉭 Made with Miku energy 𒉭</div>
+</div></div>
+<div class="microphone">🎤</div><div class="music-note">♫</div>
+
+<script>
+const canvas=document.getElementById("snakeCanvas"),ctx=canvas.getContext("2d");
+const GRID=20,CELL=canvas.width/GRID;
+
+const characters=[
+{name:"ميكو",image:"https://i.ibb.co/kspGzpN4/157-20260819225921.png",main:"#20e8f5",dark:"#087c87",glow:"#00f5ff"},
+{name:"تيتو",image:"https://i.ibb.co/fGv3t8Jp/161-20260819230140.png",main:"#ff668f",dark:"#a52d52",glow:"#ff4f88"},
+{name:"نيرو",image:"https://i.ibb.co/9HRb6hWs/158-20260819225946.png",main:"#b8a2ff",dark:"#684baf",glow:"#a987ff"},
+{name:"لوكا",image:"https://i.ibb.co/qMXgPFVC/159-20260819230004.png",main:"#ff9fc5",dark:"#a8446d",glow:"#ff75b0"},
+{name:"رين",image:"https://i.ibb.co/1frTsNRd/160-20260819230022.png",main:"#ffe052",dark:"#ad8110",glow:"#ffd429"},
+{name:"أبو ميكو",image:"https://i.ibb.co/6RQ5v91w/157-20260819231454.png",main:"#b68cff",dark:"#6740a9",glow:"#b47cff"}
+];
+
+const characterImages=characters.map(c=>{const i=new Image();i.onload=draw;i.src=c.image;return i});
+let selectedSkin=Number(localStorage.getItem("aboMikuSkin")||0);
+let bestScore=Number(localStorage.getItem("aboMikuBest")||0);
+let playerName=localStorage.getItem("aboMikuPlayerName")||"";
+let snake=[],food={x:14,y:10},direction={x:1,y:0},nextDirection={x:1,y:0};
+let score=0,gameRunning=false,timer=null,touchStartX=0,touchStartY=0,particles=[],flash=0;
+
+const scoreEl=document.getElementById("score"),bestEl=document.getElementById("best");
+const overlay=document.getElementById("snakeOverlay"),overlayTitle=document.getElementById("overlayTitle"),overlayText=document.getElementById("overlayText");
+const gameMessage=document.getElementById("gameMessage"),skinPanel=document.getElementById("skinPanel"),skinsButton=document.getElementById("skinsButton");
+const nameOverlay=document.getElementById("nameOverlay"),nameInput=document.getElementById("playerNameInput"),saveNameButton=document.getElementById("saveNameButton");
+bestEl.textContent=bestScore;
+
+function updateLeader(){
+  const n=document.getElementById("leaderName"),s=document.getElementById("leaderScore"),a=document.getElementById("leaderAvatar");
+  const savedName=localStorage.getItem("aboMikuLeaderName")||"",savedScore=Number(localStorage.getItem("aboMikuLeaderScore")||0),savedSkin=Number(localStorage.getItem("aboMikuLeaderSkin")||0);
+  if(savedName){n.textContent=savedName;s.textContent="SCORE: "+savedScore;a.src=characters[savedSkin].image}
+}
+updateLeader();
+
+function updateSkinUI(){
+  document.querySelectorAll(".skin").forEach((e,i)=>{e.classList.toggle("selected",i===selectedSkin);e.classList.toggle("disabled",gameRunning)});
+}
+document.querySelectorAll(".skin").forEach((e,i)=>e.addEventListener("click",()=>{
+  if(gameRunning)return;selectedSkin=i;localStorage.setItem("aboMikuSkin",selectedSkin);updateSkinUI();skinPanel.classList.remove("show");skinsButton.textContent="🎀 SKINS";gameMessage.textContent="تم اختيار "+characters[selectedSkin].name+" ✨";draw();
+}));
+updateSkinUI();
+
+skinsButton.addEventListener("click",()=>{
+  if(gameRunning)return;const v=skinPanel.classList.toggle("show");skinsButton.textContent=v?"✕ CLOSE":"🎀 SKINS";
+});
+
+function requestName(){
+  if(playerName)return true;
+  nameOverlay.classList.remove("hidden");
+  setTimeout(()=>nameInput.focus(),80);
+  return false;
+}
+function savePlayerName(){
+  let name=nameInput.value.trim();
+  if(!name){nameInput.focus();nameInput.placeholder="اكتب اسمك أولاً 🩵";return}
+  playerName=name.substring(0,24);
+  localStorage.setItem("aboMikuPlayerName",playerName);
+  nameOverlay.classList.add("hidden");
+  startGame();
+}
+saveNameButton.addEventListener("click",savePlayerName);
+nameInput.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();savePlayerName()}});
+
+function resetSnake(){
+  snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10},{x:7,y:10},{x:6,y:10}];
+  direction={x:1,y:0};nextDirection={x:1,y:0};score=0;scoreEl.textContent="0";
+}
+function createFood(){
+  let valid=false;
+  while(!valid){
+    food.x=Math.floor(Math.random()*GRID);food.y=Math.floor(Math.random()*GRID);
+    valid=!snake.some(p=>p.x===food.x&&p.y===food.y);
+  }
+}
+function createParticles(x,y){
+  for(let i=0;i<28;i++)particles.push({
+    x:x*CELL+CELL/2,y:y*CELL+CELL/2,vx:(Math.random()-.5)*6,vy:(Math.random()-.5)*6,
+    life:1,size:2+Math.random()*5,star:Math.random()>.45
+  });
+  flash=1;
+  document.body.classList.remove("shake");void document.body.offsetWidth;document.body.classList.add("shake");
+  setTimeout(()=>document.body.classList.remove("shake"),300);
+}
+function updateParticles(){
+  particles=particles.filter(p=>p.life>0);
+  particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.05;p.life-=.035});
+}
+function drawParticles(){
+  particles.forEach(p=>{
+    ctx.save();ctx.globalAlpha=p.life;ctx.fillStyle=characters[selectedSkin].glow;ctx.shadowColor=characters[selectedSkin].glow;ctx.shadowBlur=12;
+    if(p.star){
+      ctx.translate(p.x,p.y);ctx.rotate(Date.now()/400+p.x);ctx.beginPath();
+      for(let i=0;i<10;i++){let a=-Math.PI/2+i*Math.PI/5,r=i%2===0?4:1.8;let x=Math.cos(a)*r,y=Math.sin(a)*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}
+      ctx.closePath();ctx.fill();
+    }else{ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill()}
+    ctx.restore();
+  });
+}
+function startGame(){
+  if(!requestName())return;
+  clearInterval(timer);resetSnake();createFood();particles=[];gameRunning=true;skinPanel.classList.remove("show");
+  skinsButton.textContent="🔒 SKINS";updateSkinUI();overlay.classList.add("hidden");
+  gameMessage.textContent="يلا يا "+playerName+" 🐍✨";draw();timer=setInterval(gameLoop,170);
+}
+function endGame(){
+  gameRunning=false;clearInterval(timer);updateSkinUI();skinsButton.textContent="🎀 SKINS";
+  if(score>bestScore){bestScore=score;localStorage.setItem("aboMikuBest",bestScore);bestEl.textContent=bestScore;gameMessage.textContent="🏆 رقم جديد! انشهد انك كفو!";}
+  else gameMessage.textContent="💫 انتهت الجولة — حاول مرة ثانية";
+  const old=Number(localStorage.getItem("aboMikuLeaderScore")||0);
+  if(score>old){
+    localStorage.setItem("aboMikuLeaderName",playerName);localStorage.setItem("aboMikuLeaderScore",score);localStorage.setItem("aboMikuLeaderSkin",selectedSkin);updateLeader();
+  }
+  overlayTitle.textContent="GAME OVER";overlayText.textContent=playerName+" • SCORE: "+score;overlay.classList.remove("hidden");draw();
+}
+function changeDirection(x,y){
+  if(!gameRunning)return;
+  if(x===-direction.x&&y===-direction.y)return;
+  nextDirection={x,y};
+}
+function gameLoop(){
+  if(!gameRunning)return;direction=nextDirection;
+  const h=snake[0],nh={x:h.x+direction.x,y:h.y+direction.y};
+  if(nh.x<0||nh.x>=GRID||nh.y<0||nh.y>=GRID){endGame();return}
+  if(snake.some(p=>p.x===nh.x&&p.y===nh.y)){endGame();return}
+  snake.unshift(nh);
+  if(nh.x===food.x&&nh.y===food.y){
+    score++;scoreEl.textContent=score;createParticles(food.x,food.y);createFood();gameMessage.textContent="✨ نجمة! +"+score+" — كفو يا "+playerName;
+  }else snake.pop();
+  draw();
+}
+function drawBackground(){
+  const g=ctx.createLinearGradient(0,0,600,600);g.addColorStop(0,"#061d2c");g.addColorStop(.5,"#03141f");g.addColorStop(1,"#090b20");
+  ctx.fillStyle=g;ctx.fillRect(0,0,canvas.width,canvas.height);ctx.strokeStyle="#7cefff0b";ctx.lineWidth=1;
+  for(let i=0;i<=GRID;i++){let p=i*CELL;ctx.beginPath();ctx.moveTo(p,0);ctx.lineTo(p,canvas.height);ctx.stroke();ctx.beginPath();ctx.moveTo(0,p);ctx.lineTo(canvas.width,p);ctx.stroke()}
+}
+function drawFood(){
+  const x=food.x*CELL+CELL/2,y=food.y*CELL+CELL/2,pulse=1+Math.sin(Date.now()/180)*.12;
+  ctx.save();ctx.translate(x,y);ctx.scale(pulse,pulse);ctx.shadowColor="#7cefff";ctx.shadowBlur=28;ctx.fillStyle="#a7f8ff";
+  ctx.beginPath();for(let i=0;i<10;i++){let a=-Math.PI/2+i*Math.PI/5,r=i%2===0?CELL*.33:CELL*.14,px=Math.cos(a)*r,py=Math.sin(a)*r;i?ctx.lineTo(px,py):ctx.moveTo(px,py)}ctx.closePath();ctx.fill();ctx.restore();
+}
+function drawBody(){
+  const c=characters[selectedSkin];
+  for(let i=snake.length-1;i>=1;i--){let p=snake[i],x=p.x*CELL+CELL/2,y=p.y*CELL+CELL/2,size=CELL*.98;
+    ctx.save();ctx.globalAlpha=Math.max(.45,1-i*.015);ctx.fillStyle=c.main;ctx.shadowColor=c.glow;ctx.shadowBlur=10;
+    ctx.beginPath();ctx.roundRect(x-size/2,y-size/2,size,size,size*.28);ctx.fill();ctx.globalAlpha=.28;ctx.fillStyle="#fff";
+    ctx.beginPath();ctx.arc(x-size*.18,y-size*.18,size*.11,0,Math.PI*2);ctx.fill();ctx.restore();
+  }
+}
+function drawHead(){
+  const h=snake[0];if(!h)return;const img=characterImages[selectedSkin],c=characters[selectedSkin],x=h.x*CELL+CELL/2,y=h.y*CELL+CELL/2,size=CELL*1.75;
+  ctx.save();ctx.shadowColor=c.glow;ctx.shadowBlur=24;
+  if(img.complete&&img.naturalWidth>0)ctx.drawImage(img,x-size/2,y-size/2,size,size);
+  else{ctx.fillStyle=c.main;ctx.beginPath();ctx.arc(x,y,size/2,0,Math.PI*2);ctx.fill()}ctx.restore();
+}
+function draw(){
+  drawBackground();drawFood();drawBody();drawHead();updateParticles();drawParticles();
+  ctx.save();ctx.direction="ltr";ctx.textAlign="left";ctx.font="bold 18px Arial";ctx.fillStyle="#ffffffcc";ctx.shadowColor="#00eaff";ctx.shadowBlur=8;
+  ctx.fillText("SCORE "+score,14,25);ctx.restore();
+}
+document.querySelectorAll("[data-direction]").forEach(b=>b.addEventListener("pointerdown",e=>{
+  e.preventDefault();const d=b.dataset.direction;
+  if(d==="up")changeDirection(0,-1);if(d==="down")changeDirection(0,1);if(d==="left")changeDirection(-1,0);if(d==="right")changeDirection(1,0);
+}));
+document.addEventListener("keydown",e=>{
+  const k=e.key.toLowerCase();
+  if(["arrowup","w"].includes(k)){e.preventDefault();changeDirection(0,-1)}
+  else if(["arrowdown","s"].includes(k)){e.preventDefault();changeDirection(0,1)}
+  else if(["arrowleft","a"].includes(k)){e.preventDefault();changeDirection(-1,0)}
+  else if(["arrowright","d"].includes(k)){e.preventDefault();changeDirection(1,0)}
+});
+canvas.addEventListener("touchstart",e=>{const t=e.changedTouches[0];touchStartX=t.clientX;touchStartY=t.clientY},{passive:true});
+canvas.addEventListener("touchend",e=>{
+  const t=e.changedTouches[0],dx=t.clientX-touchStartX,dy=t.clientY-touchStartY;
+  if(Math.abs(dx)<20&&Math.abs(dy)<20)return;
+  if(Math.abs(dx)>Math.abs(dy))changeDirection(dx>0?1:-1,0);else changeDirection(0,dy>0?1:-1);
+},{passive:true});
+document.getElementById("startGame").addEventListener("click",startGame);
+document.getElementById("newGameButton").addEventListener("click",startGame);
+resetSnake();createFood();draw();
+</script>
+</body>
+</html>
