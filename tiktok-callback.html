@@ -3,10 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>جاري تسجيل الدخول | أبو ميكو</title>
+  <title>ربط TikTok | أبو ميكو</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #101820;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .box {
+      padding: 30px;
+    }
+
+    h1 {
+      color: #39e6ff;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>جاري ربط حساب TikTok...</h1>
-  <p>يرجى الانتظار.</p>
+
+  <div class="box">
+    <h1>🩵 جاري ربط حساب TikTok...</h1>
+    <p id="status">انتظر لحظة...</p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    const error = params.get("error");
+
+    const status = document.getElementById("status");
+
+    if (error) {
+      status.textContent = "تعذر ربط حساب TikTok.";
+    } else if (code) {
+      status.textContent = "تم استلام موافقة TikTok، جاري جلب بيانات الحساب...";
+      
+      fetch("/api/tiktok", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ code })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.follower_count !== undefined) {
+          localStorage.setItem(
+            "tiktokFollowers",
+            data.follower_count
+          );
+
+          status.textContent =
+            "تم الربط بنجاح 🎀 عدد المتابعين: " +
+            data.follower_count.toLocaleString("ar-SA");
+
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 2000);
+        } else {
+          status.textContent =
+            "حدث خطأ أثناء جلب عدد المتابعين.";
+          console.error(data);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        status.textContent =
+          "حدث خطأ في الاتصال بالخادم.";
+      });
+
+    } else {
+      status.textContent =
+        "لم يتم العثور على رمز تسجيل الدخول.";
+    }
+  </script>
+
 </body>
 </html>
