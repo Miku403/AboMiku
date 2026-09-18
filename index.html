@@ -185,7 +185,6 @@ h1{
   text-shadow:0 0 15px #00eaff66;margin-bottom:4px
 }
 .snake-subheading{font-size:12px;opacity:.45;margin-bottom:15px}
-
 .my-player-card{
   position:relative;display:flex;align-items:center;gap:12px;
   margin-bottom:12px;padding:10px 12px;border-radius:16px;
@@ -205,15 +204,9 @@ h1{
 .my-player-info{
   position:relative;z-index:1;flex:1;text-align:right
 }
-.my-player-label{
-  font-size:10px;color:#7cefff;opacity:.8
-}
-.my-player-name{
-  font-size:15px;font-weight:bold;margin-top:2px
-}
-.my-player-score{
-  font-size:11px;color:#ffd76b;margin-top:3px
-}
+.my-player-label{font-size:10px;color:#7cefff;opacity:.8}
+.my-player-name{font-size:15px;font-weight:bold;margin-top:2px}
+.my-player-score{font-size:11px;color:#ffd76b;margin-top:3px}
 .leader-card{
   position:relative;display:flex;align-items:center;gap:10px;
   margin-bottom:12px;padding:9px 12px;border-radius:15px;
@@ -225,9 +218,7 @@ h1{
   background:#ffd76b18;filter:blur(25px);left:-30px;top:-30px;
   animation:softOrb 4s ease-in-out infinite alternate
 }
-@keyframes softOrb{
-  to{transform:translate(170px,20px)}
-}
+@keyframes softOrb{to{transform:translate(170px,20px)}}
 .leader-avatar{
   width:40px;height:40px;border-radius:50%;object-fit:cover;
   border:2px solid #ffd76b;box-shadow:0 0 14px #ffd76b55
@@ -252,9 +243,7 @@ h1{
   display:block;width:100%;height:100%;background:#020c13;
   touch-action:none
 }
-.game-top-buttons{
-  display:flex;flex-wrap:wrap;gap:8px;margin-top:10px
-}
+.game-top-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .game-top-buttons button{flex:1 1 30%}
 .reset-area{
   display:flex;justify-content:center;margin-top:16px;padding-top:12px;
@@ -411,16 +400,12 @@ h1{
   padding:8px 10px;background:#ffffff0d;border:1px solid #ffffff18;
   border-radius:12px;font-size:13px;gap:8px
 }
-.top10-player{
-  display:flex;align-items:center;gap:9px;min-width:0
-}
+.top10-player{display:flex;align-items:center;gap:9px;min-width:0}
 .top10-avatar{
   width:38px;height:38px;border-radius:50%;object-fit:cover;
   border:2px solid #7cefff55;flex:none
 }
-.top10-player-info{
-  min-width:0;text-align:right
-}
+.top10-player-info{min-width:0;text-align:right}
 .top10-player-name{
   font-size:12px;font-weight:bold;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap
@@ -520,9 +505,7 @@ h1{
   position:fixed;font-size:35px;filter:drop-shadow(0 0 12px #00eaff);
   z-index:5
 }
-.microphone{
-  right:18px;bottom:22px;animation:micFloat 3s ease-in-out infinite
-}
+.microphone{right:18px;bottom:22px;animation:micFloat 3s ease-in-out infinite}
 .music-note{
   left:18px;bottom:25px;color:#9defff;
   animation:noteFloat 2.5s ease-in-out infinite
@@ -742,10 +725,10 @@ autocomplete="off">
 </button>
 
 <input
-  type="file"
-  id="avatarInput"
-  accept="image/*"
-  style="display:none">
+type="file"
+id="avatarInput"
+accept="image/*"
+style="display:none">
 
 </div>
 
@@ -960,9 +943,9 @@ const firebaseConfig={
 firebase.initializeApp(firebaseConfig);
 const database=firebase.database();
 
-/* =========================
+/* =
    DEVICE ID
-========================= */
+= */
 
 function getDeviceId(){
   let deviceId=localStorage.getItem("aboMiku_deviceId");
@@ -983,9 +966,20 @@ function getDeviceId(){
   return deviceId;
 }
 
-/* =========================
+/* =
+   NAME NORMALIZATION
+= */
+
+function normalizeName(name){
+  return String(name||"")
+    .trim()
+    .replace(/\s+/g," ")
+    .toLowerCase();
+}
+
+/* =
    AVATAR
-========================= */
+= */
 
 const DEFAULT_AVATAR=
   "https://i.ibb.co/kspGzpN4/157-20260819225921.png";
@@ -1031,9 +1025,9 @@ function updateMyPlayerUI(){
     bestEl2.textContent=bestScore;
 }
 
-/* =========================
+/* =
    PLAYER VARIABLES
-========================= */
+= */
 
 let bestScore=
   Number(
@@ -1049,9 +1043,9 @@ let playerName=
   localStorage.getItem("aboMikuPlayerName")||
   "";
 
-/* =========================
+/* =
    GAME VARIABLES
-========================= */
+= */
 
 const canvas=
   document.getElementById("snakeCanvas");
@@ -1105,9 +1099,9 @@ let isPenaltyFrozen=false;
 
 let dangerPoints=[];
 
-/* =========================
+/* =
    ELEMENTS
-========================= */
+= */
 
 const scoreEl=
   document.getElementById("score");
@@ -1174,9 +1168,9 @@ const settingsPanel=
 
 bestEl.textContent=bestScore;
 
-/* =========================
+/* =
    AVATAR INPUT
-========================= */
+= */
 
 const avatarButton=
   document.getElementById("avatarButton");
@@ -1231,24 +1225,14 @@ avatarInput.addEventListener(
         if(width>height){
 
           if(width>maxSize){
-
-            height=
-              Math.round(
-                height*maxSize/width
-              );
-
+            height=Math.round(height*maxSize/width);
             width=maxSize;
           }
 
         }else{
 
           if(height>maxSize){
-
-            width=
-              Math.round(
-                width*maxSize/height
-              );
-
+            width=Math.round(width*maxSize/height);
             height=maxSize;
           }
         }
@@ -1291,9 +1275,9 @@ avatarInput.addEventListener(
   }
 );
 
-/* =========================
+/* =
    CHARACTERS
-========================= */
+= */
 
 const characters=[
 
@@ -1367,9 +1351,9 @@ const characterImages=
     return i;
   });
 
-/* =========================
+/* =
    DROPDOWNS
-========================= */
+= */
 
 function initCustomDropdowns(){
 
@@ -1396,10 +1380,8 @@ function initCustomDropdowns(){
           document
             .querySelectorAll(".custom-options")
             .forEach(opt=>{
-
               if(opt!==options)
                 opt.classList.remove("open");
-
             });
 
           options.classList.toggle("open");
@@ -1432,10 +1414,7 @@ function initCustomDropdowns(){
 
               options.classList.remove("open");
 
-              if(
-                dropdown.id===
-                "diffDropdown"
-              ){
+              if(dropdown.id==="diffDropdown"){
 
                 easyWarning.style.display=
                   opt.dataset.value==="easy"
@@ -1461,9 +1440,9 @@ function initCustomDropdowns(){
 
 initCustomDropdowns();
 
-/* =========================
+/* =
    RAINBOW UNLOCK
-========================= */
+= */
 
 function checkRainbowUnlock(){
 
@@ -1494,9 +1473,9 @@ function checkRainbowUnlock(){
   }
 }
 
-/* =========================
+/* =
    EFFECTS
-========================= */
+= */
 
 function triggerClickEffect(e,symbol){
 
@@ -1553,10 +1532,186 @@ function escapeHtml(text){
   return div.innerHTML;
 }
 
-/* =========================
+/* =
+   RESTORE OLD LEGACY ACCOUNT
+= */
+
+async function restoreLegacyAccount(){
+
+  const normalized=
+    normalizeName(playerName);
+
+  if(
+    !normalized||
+    normalized===normalizeName("لاعب مجهول")
+  )
+    return;
+
+  try{
+
+    const snapshot=
+      await database
+        .ref("leaderboard")
+        .once("value");
+
+    const data=
+      snapshot.val()||{};
+
+    const matches=[];
+
+    Object.keys(data).forEach(key=>{
+
+      const item=data[key];
+
+      if(!item)
+        return;
+
+      /*
+       * السجلات القديمة فقط:
+       * السجل الذي لا يحتوي deviceId.
+       */
+
+      if(
+        String(item.deviceId||"").trim()
+      )
+        return;
+
+      const itemName=
+        String(item.name||"").trim();
+
+      if(
+        normalizeName(itemName)===normalized
+      ){
+
+        matches.push({
+          key:key,
+          item:item,
+          score:Number(item.score||0)
+        });
+
+      }
+
+    });
+
+    if(!matches.length)
+      return;
+
+    matches.sort(
+      (a,b)=>b.score-a.score
+    );
+
+    const bestLegacy=
+      matches[0];
+
+    const deviceId=
+      getDeviceId();
+
+    const playerRef=
+      database.ref(
+        "leaderboard/"+deviceId
+      );
+
+    const currentSnapshot=
+      await playerRef.once("value");
+
+    const current=
+      currentSnapshot.val()||{};
+
+    const currentScore=
+      Number(current.score||0);
+
+    const finalScore=
+      Math.max(
+        currentScore,
+        bestLegacy.score
+      );
+
+    await playerRef.set({
+
+      deviceId:deviceId,
+
+      name:
+        String(
+          current.name||
+          bestLegacy.item.name||
+          playerName
+        )
+        .trim()
+        .substring(0,24),
+
+      score:finalScore,
+
+      avatar:
+        current.avatar||
+        bestLegacy.item.avatar||
+        getPlayerAvatar(),
+
+      time:
+        current.time||
+        bestLegacy.item.time||
+        null,
+
+      timestamp:
+        current.timestamp||
+        bestLegacy.item.timestamp||
+        Date.now()
+    });
+
+    /*
+     * نحذف السجلات القديمة المطابقة
+     * للاسم الحالي فقط.
+     */
+
+    const updates={};
+
+    matches.forEach(match=>{
+
+      updates[
+        "leaderboard/"+match.key
+      ]=null;
+
+    });
+
+    if(Object.keys(updates).length>0){
+
+      await database
+        .ref()
+        .update(updates);
+
+    }
+
+    if(finalScore>bestScore){
+
+      bestScore=finalScore;
+
+      localStorage.setItem(
+        "aboMikuBest",
+        bestScore
+      );
+
+      bestEl.textContent=
+        bestScore;
+
+      updateMyPlayerUI();
+
+      checkRainbowUnlock();
+      updateSkinUI();
+    }
+
+  }catch(error){
+
+    console.error(
+      "Legacy account restore error:",
+      error
+    );
+
+  }
+}
+
+/* =
    FIREBASE LEADERBOARD
    ONE RECORD PER DEVICE
-========================= */
+= */
 
 function listenToCloudLeaderboard(){
 
@@ -1600,15 +1755,10 @@ function listenToCloudLeaderboard(){
             score:itemScore,
             _key:key
           };
+
         }
 
       });
-
-      /*
-       * تنظيف السجلات القديمة المكررة.
-       * هذا يفيد إذا كانت قاعدة البيانات
-       * تحتوي على سجلات push قديمة من النسخة السابقة.
-       */
 
       const updates={};
 
@@ -1634,6 +1784,7 @@ function listenToCloudLeaderboard(){
           updates[
             "leaderboard/"+key
           ]=null;
+
         }
 
       });
@@ -1675,10 +1826,19 @@ function listenToCloudLeaderboard(){
 
 listenToCloudLeaderboard();
 
-/* =========================
+/*
+ * استرجاع السجل القديم بعد تحميل الصفحة
+ * باستخدام الاسم المحفوظ محلياً.
+ */
+
+if(playerName){
+  restoreLegacyAccount();
+}
+
+/* =
    SAVE LEADERBOARD
    DETERMINISTIC DEVICE KEY
-========================= */
+= */
 
 function saveToCloudLeaderboard(
   name,
@@ -1689,7 +1849,8 @@ function saveToCloudLeaderboard(
   if(
     currentDifficulty==="easy"||
     score<=0
-  )return;
+  )
+    return;
 
   const deviceId=
     getDeviceId();
@@ -1701,17 +1862,6 @@ function saveToCloudLeaderboard(
 
   const avatar=
     getPlayerAvatar();
-
-  /*
-   * بدلاً من:
-   * leaderboard.push(...)
-   *
-   * نستخدم:
-   * leaderboard/{deviceId}
-   *
-   * وبالتالي نفس الجهاز لا يستطيع
-   * إنشاء سجل جديد بمفتاح مختلف.
-   */
 
   const playerRef=
     database.ref(
@@ -1727,10 +1877,13 @@ function saveToCloudLeaderboard(
       const oldScore=
         Number(old.score||0);
 
+      const newScore=
+        Number(score)||0;
+
       const finalScore=
         Math.max(
           oldScore,
-          Number(score)||0
+          newScore
         );
 
       return{
@@ -1738,7 +1891,11 @@ function saveToCloudLeaderboard(
         deviceId:deviceId,
 
         name:
-          String(name||old.name||"")
+          String(
+            name||
+            old.name||
+            ""
+          )
           .trim()
           .substring(0,24),
 
@@ -1749,20 +1906,13 @@ function saveToCloudLeaderboard(
           old.avatar||
           DEFAULT_AVATAR,
 
-        /*
-         * إذا كان السكور الجديد أعلى،
-         * نخزن وقت الجولة الجديدة.
-         * وإذا لم يكن أعلى، نحافظ على
-         * وقت السكور القديم.
-         */
-
         time:
-          Number(score)>oldScore
+          newScore>oldScore
             ?timeStr
             :(old.time||timeStr||null),
 
         timestamp:
-          Number(score)>oldScore
+          newScore>oldScore
             ?Date.now()
             :(old.timestamp||Date.now())
       };
@@ -1789,15 +1939,16 @@ function saveToCloudLeaderboard(
         console.log(
           "Leaderboard saved successfully"
         );
+
       }
 
     }
   );
 }
 
-/* =========================
+/* =
    LEADER
-========================= */
+= */
 
 function updateLeader(){
 
@@ -1849,12 +2000,13 @@ function updateLeader(){
 
     avatar.src=
       DEFAULT_AVATAR;
+
   }
 }
 
-/* =========================
+/* =
    TOP 10
-========================= */
+= */
 
 function updateTop10(){
 
@@ -1949,9 +2101,9 @@ function updateTop10(){
   );
 }
 
-/* =========================
+/* =
    SKINS
-========================= */
+= */
 
 function updateSkinUI(){
 
@@ -2028,23 +2180,15 @@ document
 
 updateSkinUI();
 
-/* =========================
+/* =
    PANELS
-========================= */
+= */
 
 function hideAllPanels(){
 
-  skinPanel.classList.remove(
-    "show"
-  );
-
-  top10Panel.classList.remove(
-    "show"
-  );
-
-  settingsPanel.classList.remove(
-    "show"
-  );
+  skinPanel.classList.remove("show");
+  top10Panel.classList.remove("show");
+  settingsPanel.classList.remove("show");
 }
 
 skinsButton.addEventListener(
@@ -2054,16 +2198,12 @@ skinsButton.addEventListener(
     if(gameRunning)return;
 
     const isShown=
-      skinPanel.classList.contains(
-        "show"
-      );
+      skinPanel.classList.contains("show");
 
     hideAllPanels();
 
     if(!isShown)
-      skinPanel.classList.add(
-        "show"
-      );
+      skinPanel.classList.add("show");
   }
 );
 
@@ -2072,9 +2212,7 @@ top10Btn.addEventListener(
   ()=>{
 
     const isShown=
-      top10Panel.classList.contains(
-        "show"
-      );
+      top10Panel.classList.contains("show");
 
     hideAllPanels();
 
@@ -2082,9 +2220,7 @@ top10Btn.addEventListener(
 
       updateTop10();
 
-      top10Panel.classList.add(
-        "show"
-      );
+      top10Panel.classList.add("show");
     }
   }
 );
@@ -2103,16 +2239,12 @@ settingsBtn.addEventListener(
     if(gameRunning)return;
 
     const isShown=
-      settingsPanel.classList.contains(
-        "show"
-      );
+      settingsPanel.classList.contains("show");
 
     hideAllPanels();
 
     if(!isShown)
-      settingsPanel.classList.add(
-        "show"
-      );
+      settingsPanel.classList.add("show");
   }
 );
 
@@ -2124,26 +2256,20 @@ document
 
       currentDifficulty=
         document
-          .getElementById(
-            "diffDropdown"
-          )
+          .getElementById("diffDropdown")
           .dataset.value||
         "medium";
 
       currentMap=
         document
-          .getElementById(
-            "mapDropdown"
-          )
+          .getElementById("mapDropdown")
           .dataset.value||
         "normal";
 
       speedrunEnabled=
         (
           document
-            .getElementById(
-              "speedrunDropdown"
-            )
+            .getElementById("speedrunDropdown")
             .dataset.value||
           "off"
         )==="on";
@@ -2156,24 +2282,19 @@ document
     }
   );
 
-/* =========================
+/* =
    RESET ALL
-========================= */
+= */
 
 const resetModal=
-  document.getElementById(
-    "resetModal"
-  );
+  document.getElementById("resetModal");
 
 document
   .getElementById("resetAllButton")
   .addEventListener(
     "click",
     ()=>{
-
-      resetModal.classList.add(
-        "show"
-      );
+      resetModal.classList.add("show");
     }
   );
 
@@ -2182,10 +2303,7 @@ document
   .addEventListener(
     "click",
     ()=>{
-
-      resetModal.classList.remove(
-        "show"
-      );
+      resetModal.classList.remove("show");
     }
   );
 
@@ -2197,14 +2315,6 @@ document
 
       const deviceId=
         getDeviceId();
-
-      /*
-       * السجل الجديد له مفتاح deviceId.
-       * نحذفه مباشرة.
-       *
-       * ونبحث أيضاً عن أي سجلات قديمة
-       * بنفس deviceId من النسخة السابقة.
-       */
 
       database
         .ref("leaderboard")
@@ -2224,8 +2334,7 @@ document
 
                 if(
                   item&&
-                  String(item.deviceId||"")
-                    .trim()===deviceId
+                  String(item.deviceId||"").trim()===deviceId
                 ){
 
                   updates[
@@ -2238,19 +2347,24 @@ document
             const finishReset=()=>{
 
               /*
-               * نحفظ deviceId القديم مؤقتاً
-               * حتى لا يتم إنشاء هوية جديدة
-               * بمجرد الضغط على RESET.
+               * لا نمسح localStorage بالكامل،
+               * حتى لا نضيع هوية الجهاز.
                */
 
-              const savedDeviceId=
-                deviceId;
+              localStorage.removeItem(
+                "aboMikuBest"
+              );
 
-              localStorage.clear();
+              localStorage.removeItem(
+                "aboMikuPlayerName"
+              );
 
-              localStorage.setItem(
-                "aboMiku_deviceId",
-                savedDeviceId
+              localStorage.removeItem(
+                "aboMikuPlayerAvatar"
+              );
+
+              localStorage.removeItem(
+                "aboMikuSkin"
               );
 
               bestScore=0;
@@ -2260,20 +2374,13 @@ document
               bestEl.textContent="0";
 
               updateMyPlayerUI();
-
               updateLeader();
-
               updateTop10();
-
               checkRainbowUnlock();
-
               updateSkinUI();
-
               hideAllPanels();
 
-              resetModal.classList.remove(
-                "show"
-              );
+              resetModal.classList.remove("show");
 
               gameMessage.textContent=
                 "تم إعادة ضبط كل شيء بنجاح! ✨";
@@ -2299,9 +2406,9 @@ document
     }
   );
 
-/* =========================
+/* =
    NAME
-========================= */
+= */
 
 changeNameBtn.addEventListener(
   "click",
@@ -2309,9 +2416,7 @@ changeNameBtn.addEventListener(
 
     if(gameRunning)return;
 
-    nameOverlay.classList.remove(
-      "hidden"
-    );
+    nameOverlay.classList.remove("hidden");
 
     nameInput.value=
       playerName;
@@ -2327,9 +2432,7 @@ function requestName(){
 
   if(playerName)return true;
 
-  nameOverlay.classList.remove(
-    "hidden"
-  );
+  nameOverlay.classList.remove("hidden");
 
   setTimeout(
     ()=>nameInput.focus(),
@@ -2364,12 +2467,20 @@ function savePlayerName(){
 
   updateMyPlayerUI();
 
-  nameOverlay.classList.add(
-    "hidden"
-  );
+  nameOverlay.classList.add("hidden");
 
-  if(!gameRunning)
-    startGame();
+  /*
+   * استرجاع السجل القديم المرتبط
+   * بالاسم قبل بدء الجولة.
+   */
+
+  restoreLegacyAccount()
+    .finally(()=>{
+
+      if(!gameRunning)
+        startGame();
+
+    });
 }
 
 saveNameButton.addEventListener(
@@ -2390,9 +2501,9 @@ nameInput.addEventListener(
   }
 );
 
-/* =========================
+/* =
    RESET SNAKE
-========================= */
+= */
 
 function resetSnake(){
 
@@ -2445,32 +2556,25 @@ function resetSnake(){
 
   if(speedrunEnabled){
 
-    speedrunTimerEl.style.display=
-      "inline";
+    speedrunTimerEl.style.display="inline";
 
     startTime=Date.now();
 
     elapsedTime=0;
 
-    timeValEl.textContent=
-      "00:00";
+    timeValEl.textContent="00:00";
 
-    clearInterval(
-      speedrunInterval
-    );
+    clearInterval(speedrunInterval);
 
     speedrunInterval=
       setInterval(
         ()=>{
 
           elapsedTime=
-            Date.now()-
-            startTime;
+            Date.now()-startTime;
 
           timeValEl.textContent=
-            formatTime(
-              elapsedTime
-            );
+            formatTime(elapsedTime);
 
         },
         1000
@@ -2478,18 +2582,15 @@ function resetSnake(){
 
   }else{
 
-    speedrunTimerEl.style.display=
-      "none";
+    speedrunTimerEl.style.display="none";
 
-    clearInterval(
-      speedrunInterval
-    );
+    clearInterval(speedrunInterval);
   }
 }
 
-/* =========================
+/* =
    FOOD
-========================= */
+= */
 
 function createFood(){
 
@@ -2519,9 +2620,9 @@ function createFood(){
     generateDesertDangerPoints();
 }
 
-/* =========================
+/* =
    DESERT
-========================= */
+= */
 
 function generateDesertDangerPoints(){
 
@@ -2558,9 +2659,9 @@ function generateDesertDangerPoints(){
   }
 }
 
-/* =========================
+/* =
    SNOW FREEZE
-========================= */
+= */
 
 function triggerSnowFreeze(){
 
@@ -2568,30 +2669,25 @@ function triggerSnowFreeze(){
     !gameRunning||
     currentMap!=="snow"||
     isPenaltyFrozen
-  )return;
+  )
+    return;
 
   clearInterval(timer);
 
   rpsWins=0;
 
   document
-    .getElementById(
-      "playerRpsWins"
-    )
+    .getElementById("playerRpsWins")
     .textContent=
     rpsWins;
 
   document
-    .getElementById(
-      "rpsStatus"
-    )
+    .getElementById("rpsStatus")
     .textContent=
     "اختر ضربتك ضد الكمبيوتر!";
 
   document
-    .getElementById(
-      "rpsOverlay"
-    )
+    .getElementById("rpsOverlay")
     .style.display="flex";
 }
 
@@ -2660,9 +2756,7 @@ document
           rpsWins++;
 
           document
-            .getElementById(
-              "playerRpsWins"
-            )
+            .getElementById("playerRpsWins")
             .textContent=
             rpsWins;
 
@@ -2672,11 +2766,8 @@ document
           if(rpsWins>=3){
 
             document
-              .getElementById(
-                "rpsOverlay"
-              )
-              .style.display=
-              "none";
+              .getElementById("rpsOverlay")
+              .style.display="none";
 
             score+=3;
 
@@ -2692,25 +2783,19 @@ document
         }else{
 
           document
-            .getElementById(
-              "rpsOverlay"
-            )
-            .style.display=
-            "none";
+            .getElementById("rpsOverlay")
+            .style.display="none";
 
           const mockOverlay=
             document.getElementById(
               "botMockOverlay"
             );
 
-          mockOverlay.style.display=
-            "flex";
+          mockOverlay.style.display="flex";
 
           setTimeout(
             ()=>{
-              mockOverlay.style.display=
-                "none";
-
+              mockOverlay.style.display="none";
               applyPenaltyFreeze();
             },
             1800
@@ -2768,9 +2853,7 @@ function resumeNormalGame(){
       ?90
       :150;
 
-  if(
-    currentDifficulty==="easy"
-  )
+  if(currentDifficulty==="easy")
     speed=170;
 
   timer=
@@ -2805,9 +2888,9 @@ function scheduleSnowFreeze(){
   }
 }
 
-/* =========================
+/* =
    ENVIRONMENT
-========================= */
+= */
 
 function initEnvParticles(){
 
@@ -2916,9 +2999,9 @@ function drawEnvParticles(){
   ctx.restore();
 }
 
-/* =========================
+/* =
    PARTICLES
-========================= */
+= */
 
 function createParticles(x,y){
 
@@ -2952,20 +3035,14 @@ function createParticles(x,y){
     });
   }
 
-  document.body
-    .classList
-    .remove("shake");
+  document.body.classList.remove("shake");
 
   void document.body.offsetWidth;
 
-  document.body
-    .classList
-    .add("shake");
+  document.body.classList.add("shake");
 
   setTimeout(
-    ()=>document.body
-      .classList
-      .remove("shake"),
+    ()=>document.body.classList.remove("shake"),
     200
   );
 }
@@ -3023,9 +3100,9 @@ function drawParticles(){
   );
 }
 
-/* =========================
+/* =
    START GAME
-========================= */
+= */
 
 function startGame(){
 
@@ -3033,14 +3110,8 @@ function startGame(){
     return;
 
   clearInterval(timer);
-
-  clearInterval(
-    speedrunInterval
-  );
-
-  clearInterval(
-    freezeTimer
-  );
+  clearInterval(speedrunInterval);
+  clearInterval(freezeTimer);
 
   hideAllPanels();
 
@@ -3056,9 +3127,7 @@ function startGame(){
 
   updateSkinUI();
 
-  overlay.classList.add(
-    "hidden"
-  );
+  overlay.classList.add("hidden");
 
   gameMessage.textContent=
     "يلا يا "+
@@ -3072,9 +3141,9 @@ function startGame(){
   draw();
 }
 
-/* =========================
+/* =
    HIT
-========================= */
+= */
 
 function handleHit(){
 
@@ -3112,39 +3181,27 @@ function handleHit(){
   }
 }
 
-/* =========================
+/* =
    END GAME
-========================= */
+= */
 
 function endGame(){
 
   gameRunning=false;
 
   clearInterval(timer);
-
-  clearInterval(
-    speedrunInterval
-  );
-
-  clearInterval(
-    freezeTimer
-  );
+  clearInterval(speedrunInterval);
+  clearInterval(freezeTimer);
 
   updateSkinUI();
 
   document
-    .getElementById(
-      "rpsOverlay"
-    )
-    .style.display=
-    "none";
+    .getElementById("rpsOverlay")
+    .style.display="none";
 
   document
-    .getElementById(
-      "botMockOverlay"
-    )
-    .style.display=
-    "none";
+    .getElementById("botMockOverlay")
+    .style.display="none";
 
   if(score>bestScore){
 
@@ -3159,6 +3216,8 @@ function endGame(){
       bestScore;
 
     updateMyPlayerUI();
+
+    checkRainbowUnlock();
 
     gameMessage.textContent=
       "🏆 رقم جديد! انشهد انك كفو!";
@@ -3195,16 +3254,14 @@ function endGame(){
         :""
     );
 
-  overlay.classList.remove(
-    "hidden"
-  );
+  overlay.classList.remove("hidden");
 
   draw();
 }
 
-/* =========================
+/* =
    DIRECTION
-========================= */
+= */
 
 function changeDirection(x,y){
 
@@ -3225,15 +3282,13 @@ function changeDirection(x,y){
     y
   };
 
-  if(
-    currentMap==="desert"
-  )
+  if(currentMap==="desert")
     desertSlidePending=true;
 }
 
-/* =========================
+/* =
    GAME LOOP
-========================= */
+= */
 
 function gameLoop(){
 
@@ -3357,6 +3412,13 @@ function gameLoop(){
 
   snake.unshift(nh);
 
+  /*
+   * إصلاح جمع النقاط:
+   * كان الكود القديم يحتوي فقط على:
+   * score;
+   * لذلك كانت النقطة لا تزيد.
+   */
+
   if(
     nh.x===food.x&&
     nh.y===food.y
@@ -3390,9 +3452,9 @@ function gameLoop(){
   draw();
 }
 
-/* =========================
+/* =
    BACKGROUND
-========================= */
+= */
 
 function drawBackground(){
 
@@ -3538,9 +3600,9 @@ function drawBackground(){
   }
 }
 
-/* =========================
+/* =
    DRAW
-========================= */
+= */
 
 function draw(){
 
@@ -3663,9 +3725,9 @@ function draw(){
   drawParticles();
 }
 
-/* =========================
+/* =
    CONTROLS
-========================= */
+= */
 
 document
   .querySelectorAll(".control")
@@ -3679,35 +3741,23 @@ document
           btn.dataset.direction;
 
         if(d==="up")
-          changeDirection(
-            0,
-            -1
-          );
+          changeDirection(0,-1);
 
         if(d==="down")
-          changeDirection(
-            0,
-            1
-          );
+          changeDirection(0,1);
 
         if(d==="left")
-          changeDirection(
-            -1,
-            0
-          );
+          changeDirection(-1,0);
 
         if(d==="right")
-          changeDirection(
-            1,
-            0
-          );
+          changeDirection(1,0);
       }
     );
   });
 
-/* =========================
+/* =
    TOUCH
-========================= */
+= */
 
 canvas.addEventListener(
   "touchstart",
@@ -3743,30 +3793,18 @@ canvas.addEventListener(
     ){
 
       if(dx>30)
-        changeDirection(
-          1,
-          0
-        );
+        changeDirection(1,0);
 
       else if(dx<-30)
-        changeDirection(
-          -1,
-          0
-        );
+        changeDirection(-1,0);
 
     }else{
 
       if(dy>30)
-        changeDirection(
-          0,
-          1
-        );
+        changeDirection(0,1);
 
       else if(dy<-30)
-        changeDirection(
-          0,
-          -1
-        );
+        changeDirection(0,-1);
     }
 
   },
@@ -3775,9 +3813,9 @@ canvas.addEventListener(
   }
 );
 
-/* =========================
+/* =
    KEYBOARD
-========================= */
+= */
 
 window.addEventListener(
   "keydown",
@@ -3797,34 +3835,22 @@ window.addEventListener(
     }
 
     if(e.key==="ArrowUp")
-      changeDirection(
-        0,
-        -1
-      );
+      changeDirection(0,-1);
 
     if(e.key==="ArrowDown")
-      changeDirection(
-        0,
-        1
-      );
+      changeDirection(0,1);
 
     if(e.key==="ArrowLeft")
-      changeDirection(
-        -1,
-        0
-      );
+      changeDirection(-1,0);
 
     if(e.key==="ArrowRight")
-      changeDirection(
-        1,
-        0
-      );
+      changeDirection(1,0);
   }
 );
 
-/* =========================
+/* =
    START BUTTONS
-========================= */
+= */
 
 document
   .getElementById("startGame")
@@ -3840,9 +3866,9 @@ document
     startGame
   );
 
-/* =========================
+/* =
    INITIALIZE
-========================= */
+= */
 
 updateMyPlayerUI();
 
