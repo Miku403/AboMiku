@@ -3636,27 +3636,20 @@ function draw(){
       }
     );
   }
+  
+const foodImg=new Image();
 
-  ctx.font=
-    (
-      currentDifficulty==="easy"
-        ?"24px"
-        :"20px"
-    )+
-    " Arial";
+foodImg.src=
+  "https://cdn.phototourl.com/free/2026-09-19-efa678cf-b830-4af9-a4e4-644b26863017.png";
 
-  ctx.fillText(
-    "🍎",
-    food.x*CELL+
-      (
-        currentDifficulty==="easy"
-          ?-2
-          :2
-      ),
-    food.y*CELL+
-      CELL-2
-  );
-
+ctx.drawImage(
+  foodImg,
+  food.x*CELL,
+  food.y*CELL,
+  CELL,
+  CELL
+);
+  
   const curChar=
     characters[selectedSkin];
 
