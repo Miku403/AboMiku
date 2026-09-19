@@ -3603,7 +3603,11 @@ function drawBackground(){
 /* =
    DRAW
 = */
+const foodImg=new Image();
 
+foodImg.src=
+  "https://cdn.phototourl.com/free/2026-09-19-efa678cf-b830-4af9-a4e4-644b26863017.png";
+  
 function draw(){
 
   ctx.clearRect(
@@ -3637,12 +3641,7 @@ function draw(){
     );
   }
   
-const foodImg=new Image();
-
-foodImg.src=
-  "https://cdn.phototourl.com/free/2026-09-19-efa678cf-b830-4af9-a4e4-644b26863017.png";
-
-ctx.drawImage(
+  ctx.drawImage(
   foodImg,
   food.x*CELL,
   food.y*CELL,
